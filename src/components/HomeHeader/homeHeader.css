@@ -1,0 +1,42 @@
+.home-header {
+  height: 500px;
+  margin-bottom: 5rem;
+}
+
+.home-header .text-side {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.home-header .text-side h1 {
+  font-size: 3.5rem;
+  margin-bottom: 3rem;
+  font-weight: 900;
+}
+
+.home-header .text-side h1 span {
+  color: var(--primary-color);
+}
+.home-header .text-side h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.home-header .carousel-side {
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.carousel-side .carousel-inner,
+.carousel-side .carousel-inner .carousel-item {
+  height: 500px;
+  background: transparent;
+  border-radius: 1rem;
+}
+
+.carousel-side .carousel-inner img {
+  height: 100%;
+  object-fit: cover;
+}

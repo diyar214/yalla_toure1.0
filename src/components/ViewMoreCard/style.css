@@ -1,0 +1,26 @@
+.view-more {
+  width: 300px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.view-more button {
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: 1.5rem;
+  background: var(--primary-color);
+  border-radius: 10px;
+  border-radius: 10px;
+  outline: 0;
+  border: 0;
+  transition: 0.3s background;
+
+  &:hover {
+    background: #0e7c68;
+  }
+}

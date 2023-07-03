@@ -1,0 +1,14 @@
+.home {
+  padding: 0 5rem;
+}
+
+.home hr {
+  border-top: solid 3px;
+  opacity: 0.5;
+}
+
+.places {
+  display: grid;
+  grid-template-columns: repeat(5, 2fr);
+  grid-gap: 2rem;
+}

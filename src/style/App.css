@@ -1,0 +1,35 @@
+.App {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif !important;
+  height: 100dvh;
+  overflow: auto;
+  display: grid;
+  gap: 5rem;
+}
+
+.container-fluid {
+  padding-inline: 6rem;
+}
+
+/* width */
+.App::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.App::-webkit-scrollbar-track {
+  background: rgb(206, 206, 206);
+}
+
+/* Handle */
+.App::-webkit-scrollbar-thumb {
+  background: rgb(156, 156, 156);
+  border-radius: 50px;
+  border: 3px solid rgb(206, 206, 206);
+}
+
+/* Handle on hover */
+.App::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
