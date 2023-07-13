@@ -7,46 +7,51 @@ import "./footer.css";
 function Footer() {
   return (
     <div className="footer">
-      <div className="upper-container">
-        <div className="logo-container">
+      <div className="container text-center">
+        <div className="row">
+          <div className="logo-container col">
           <h1>logo</h1>
           <p>Travel Company</p>
         </div>
-        <div className="info-container">
+        <div className="info-container col">
           {/* Replace <p> with <a> */}
           <p>WEEBLY THEMES</p>
           <p>PRE-SALE FAOS</p>
           <p>SUBMIT A TICKET</p>
         </div>
-        <div className="info-container">
+        <div className="info-container col">
           {/* Replace <p> with <a> */}
           <p>WEEBLY THEMES</p>
           <p>PRE-SALE FAOS</p>
           <p>SUBMIT A TICKET</p>
         </div>
-        <div className="info-container">
+        <div className="info-container col">
           {/* Replace <p> with <a> */}
           <p>WEEBLY THEMES</p>
           <p>PRE-SALE FAOS</p>
           <p>SUBMIT A TICKET</p>
         </div>
-        <div className="info-container">
+        <div className="info-container col">
           {/* Replace <p> with <a> */}
           <p>WEEBLY THEMES</p>
           <p>PRE-SALE FAOS</p>
           <p>SUBMIT A TICKET</p>
         </div>
+
+        </div>
+        
       </div>
       <hr />
-      <div className="lower-container">
+      <div className="container text-center">
+        <div className="row">
         <div className="social">
-          <a href="#">
+          <a href="#" col>
             <img src={facebook} alt="social" />
           </a>
-          <a href="#">
+          <a href="#" col>
             <img src={twitter} alt="social" />
           </a>
-          <a href="#">
+          <a href="#" col>
             <img src={instagram} alt="social" />
           </a>
         </div>
@@ -54,6 +59,7 @@ function Footer() {
           &#169;Copyright.All right not reserved yet
         </h6>
       </div>
+    </div>
     </div>
   );
 }

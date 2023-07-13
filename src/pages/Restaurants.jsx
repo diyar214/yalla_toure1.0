@@ -1,29 +1,44 @@
-import { useState } from "react";
-import Cards from "../components/Cards/Cards";
-import ViewMore from "../components/ViewMoreCard/ViewMore";
+import Cards from "../components/Cards/PlaceCard";
+import RestaurantCard from "../components/Cards/ResturantCard"
 
-const Restaurants = () => {
-  const [allData, setAllData] = useState([
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-  ]);
-  const [counter, setCounter] = useState(10);
-  const [show, setShow] = useState(false);
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-  const showData = () => {
-    setCounter(allData.length - 1);
-    setShow(true);
+const Places = () => {
+  const [allData, setAllData] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("https://localhost:7041/Restaurant/GetAllRestaurants");
+      setAllData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
+
 
   return (
     <div className="container-fluid places">
-      {allData.map((item, i) => {
-        if (i === counter - 1 && !show) {
-          return <ViewMore onClick={showData} />;
-        }
-        if (i < counter) return <Cards />;
+      {allData.map((item) => {
+        const {id, name, imgUrl,description, address}= item;
+          return (
+          <RestaurantCard
+            key={id}
+            name={name}
+            imgUrl={imgUrl}
+            description={description}
+            address={address}
+            
+          />
+        );
       })}
     </div>
   );
 };
 
-export default Restaurants;
+export default Places;

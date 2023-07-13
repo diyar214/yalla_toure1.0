@@ -1,0 +1,12 @@
+.center-div {
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    padding:0 10%;
+    min-width: 100px;
+    
+  }
+  .inputField{
+    margin: 1% 0;
+    min-width: 100px;
+  }

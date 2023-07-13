@@ -10,18 +10,18 @@
   color: white;
 }
 
-.footer .upper-container {
+.upper-container {
   display: flex;
   justify-content: space-between;
 }
 
-.footer hr {
+hr {
   opacity: 0.5;
   font-size: 1em;
   border-width: 2px;
 }
 
-.footer .logo-container,
+.logo-container,
 .footer .info-container {
   text-transform: uppercase;
 }
