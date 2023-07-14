@@ -4,12 +4,20 @@
   font-family: "Montserrat", sans-serif !important;
   height: 100dvh;
   overflow: auto;
+  overflow-x: hidden;
   display: grid;
   gap: 5rem;
 }
 
+@media (max-width: 768px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .container-fluid {
-  padding-inline: 6rem;
+  padding-inline: 6dvw;
 }
 
 /* width */

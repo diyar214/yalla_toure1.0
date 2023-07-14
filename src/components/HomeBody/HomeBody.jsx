@@ -6,13 +6,13 @@ function HomeBody() {
   return (
     <div className="container-fluid home-body">
       <div className="row row-1">
-        <div className="col-6 img-side">
+        <div className="col-12 col-md-12 col-lg-6  img-side">
           <Carousel
             id="1"
             // imgs={}
           />
         </div>
-        <div className="col-6 text-side">
+        <div className="col-12 col-md-12 col-lg-6 text-side">
           <h1>Welcome to the Enigmatica UI Experience™</h1>
           <h3>
             Say goodbye to the mundane world of intuitive user interfaces!
@@ -26,7 +26,7 @@ function HomeBody() {
         </div>
       </div>
       <div className="row row-2">
-        <div className="col-6 text-side">
+        <div className="col-12 col-md-12 col-lg-6 text-side">
           <h1>Welcome to the Enigmatica UI Experience™</h1>
           <h3>
             Say goodbye to the mundane world of intuitive user interfaces!
@@ -38,7 +38,7 @@ function HomeBody() {
             secrets of your app.
           </h3>
         </div>
-        <div className="col-6 img-side">
+        <div className="col-12 col-md-12 col-lg-6 img-side">
           <Carousel
             id="2"
             // imgs={}

@@ -91,7 +91,7 @@ li {
 .search-bar {
   display: flex;
   width: 30px;
-  overflow: hidden;
+  /* overflow: hidden; */
   padding: 5px 3px;
   border-radius: 8px;
   transition: all 0.3s ease;
@@ -113,6 +113,7 @@ li {
   color: white;
   text-decoration: none;
   padding: 5px 3px;
+  font-size: 20px;
 }
 
 /* !here */
@@ -152,10 +153,27 @@ ul {
   padding-inline-start: 0px;
 }
 
+@media (max-width: 1270px) {
+  .navbar .navigation-container {
+    width: 60%;
+  }
+}
+
+@media (max-width: 1110px) {
+  .navbar .navigation-container {
+    width: 70%;
+  }
+}
+
+@media (max-width: 1010px) {
+  .navbar .navigation-container {
+    width: 100%;
+  }
+}
+
 @media (max-width: 1000px) {
   .logo-container {
     width: 80%;
-    margin: 2rem 0rem;
   }
 
   .burger-btn {
@@ -178,6 +196,8 @@ ul {
 
   .left-side {
     display: none;
+    justify-content: center;
+    align-items: center;
   }
 
   .visible {

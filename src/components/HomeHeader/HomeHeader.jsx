@@ -5,7 +5,7 @@ function HomeHeader() {
   return (
     <div className="container-fluid home-header">
       <div className="row">
-        <div className="col-6 text-side">
+        <div className="col-12 col-md-12 col-lg-6 text-side">
           <h1>
             Welcome to <span>Enigmatica UI</span> Experience
           </h1>
@@ -17,7 +17,7 @@ function HomeHeader() {
             menus materialize from the depths of the digital cosmos.
           </h3>
         </div>
-        <div className="col-6 carousel-side">
+        <div className="col-12 col-md-12 col-lg-6 carousel-side">
           <div
             id="carouselExampleControls"
             className="carousel slide"

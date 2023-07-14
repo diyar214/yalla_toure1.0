@@ -1,15 +1,18 @@
 import HomeBody from "../components/HomeBody/HomeBody";
 import HomeHeader from "../components/HomeHeader/HomeHeader";
+import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/footer/Footer";
 
 const Home = () => {
   return (
-    <div className="home">
-      <HomeHeader />
-
-      <hr />
-
-      <HomeBody />
-    </div>
+    <>
+      <Navbar />
+      <div className="home">
+        <HomeHeader />
+        <HomeBody />
+      </div>
+      <Footer />
+    </>
   );
 };
 

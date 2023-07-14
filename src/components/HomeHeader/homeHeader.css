@@ -1,6 +1,6 @@
 .home-header {
   height: 500px;
-  margin-bottom: 5rem;
+  margin-bottom: 5dvh;
 }
 
 .home-header .text-side {
@@ -11,21 +11,21 @@
 }
 
 .home-header .text-side h1 {
-  font-size: 3.5rem;
-  margin-bottom: 3rem;
+  font-size: 2.5dvw;
+  margin-bottom: 3dvh;
   font-weight: 900;
+}
+
+.home-header .text-side h3 {
+  font-size: 1.5dvw;
+  font-weight: 500;
 }
 
 .home-header .text-side h1 span {
   color: var(--primary-color);
 }
-.home-header .text-side h3 {
-  font-size: 1.5rem;
-  font-weight: 500;
-}
 
 .home-header .carousel-side {
-  overflow: hidden;
   border-radius: 0.5rem;
 }
 
@@ -39,4 +39,26 @@
 .carousel-side .carousel-inner img {
   height: 100%;
   object-fit: cover;
+}
+
+@media (max-width: 991px) {
+  .home-header {
+    height: auto;
+  }
+
+  .carousel-side .carousel-inner,
+  .carousel-side .carousel-inner .carousel-item {
+    height: 50dvw;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-header .text-side h1 {
+    font-size: 2rem;
+  }
+
+  .home-header .text-side h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
 }

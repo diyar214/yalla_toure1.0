@@ -1,28 +1,33 @@
+import React from "react";
+import axios from "axios";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
-import Navbar from "./components/Navbar/Navbar";
+import "./style/App.css";
+import "./pages/pages.css";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Places from "./pages/Places";
-import AddPlace from "./pages/AddPlace";
 import Restaurants from "./pages/Restaurants";
-import "./style/App.css";
-import "./pages/pages.css";
-import Footer from "./components/footer/Footer";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Create from "./components/Create/Create";
 
 function App() {
+  axios.defaults.baseURL = "https://localhost:7041";
+  axios.defaults.headers.common["Content-Type"] = "application/json";
+
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
         <Routes>
           <Route path="/" exact Component={Home} />
           <Route path="/About" Component={About} />
           <Route path="/Places" Component={Places} />
           <Route path="/Restaurants" Component={Restaurants} />
-          <Route path="/CreatePlace" Component={AddPlace} />
+          <Route path="/login" Component={Login} />
+          <Route path="/register" Component={Register} />
+          <Route path="/adminPanel" Component={Create} />
         </Routes>
-        <Footer />
       </BrowserRouter>
     </div>
   );

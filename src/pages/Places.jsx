@@ -1,47 +1,57 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import LocationCards from "../components/Cards/LocationCards";
+import ViewMore from "../components/ViewMoreCard/ViewMore";
+import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/footer/Footer";
 import axios from "axios";
-import Cards from "../components/Cards/PlaceCard";
 
 const Places = () => {
   const [allData, setAllData] = useState([]);
+  const [counter, setCounter] = useState(10);
+  const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("https://localhost:7041/Location/GetAllLocations");
-      setAllData(response.data);
-      console.log(response.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+  const showData = () => {
+    setCounter(allData.length - 1);
+    setShow(true);
   };
 
+  useEffect(() => {
+    const config = {
+      method: "get",
+      url: "/Location/GetAllLocations",
+    };
+
+    axios(config)
+      .then((res) => setAllData([...res.data]))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
-    <div className="container-fluid places">
-      {allData.map((item) => {
-        const {id, name, imgUrl,description, address, type, oTime, cTime, enteranceFee, rules }= item;
-          return (
-          <Cards
-            key={id}
-            name={name}
-            imgUrl={imgUrl}
-            description={description}
-            address={address}
-            type={type}
-            oTime={oTime}
-            cTime={cTime}
-            entranceFee={enteranceFee}
-            rules={rules}
-          />
-          )
-        
-      })}
-
-    </div>
+    <>
+      <Navbar />
+      <div className="container-fluid places">
+        {allData.map((item, i) => {
+          if (i === counter - 1 && !show) {
+            return <ViewMore onClick={showData} key={i} />;
+          }
+          if (i < counter)
+            return (
+              <LocationCards
+                key={i}
+                name={item.name}
+                imgUrl={item.imgUrl}
+                address={item.address}
+                type={item.type}
+                oTime={item.oTime}
+                cTime={item.cTime}
+                description={item.description}
+                enteranceFee={item.enteranceFee}
+              />
+            );
+        })}
+      </div>
+      <Footer />
+    </>
   );
 };
 

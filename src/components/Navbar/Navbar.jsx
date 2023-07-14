@@ -51,7 +51,7 @@ const Navbar = () => {
           </li>
         </ul>
         <div className={`left-side ${open ? "visible" : ""}`}>
-          <div className={`search-bar ${active ? "active-search-bar" : ""}`}>
+          {/* <div className={`search-bar ${active ? "active-search-bar" : ""}`}>
             <p
               className={"search-bar-icon"}
               onClick={() => {
@@ -64,9 +64,9 @@ const Navbar = () => {
               type="text"
               className={`search-bar-input ${active ? "active-search" : ""}`}
             />
-          </div>
-          <Link to="/a" className="reg-link">
-            Register
+          </div> */}
+          <Link to="/login" className="reg-link">
+            login
           </Link>
         </div>
       </div>

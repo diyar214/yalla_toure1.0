@@ -4,24 +4,24 @@
   width: 100%;
   height: 500px;
   background: #14977f;
-  padding-inline: 10rem;
+  padding-inline: 10dvw;
   display: grid;
   align-items: center;
   color: white;
 }
 
-.upper-container {
+.footer .upper-container {
   display: flex;
   justify-content: space-between;
 }
 
-hr {
+.footer hr {
   opacity: 0.5;
   font-size: 1em;
   border-width: 2px;
 }
 
-.logo-container,
+.footer .logo-container,
 .footer .info-container {
   text-transform: uppercase;
 }
@@ -76,5 +76,27 @@ hr {
 
   &:hover {
     background: rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 5rem 3rem;
+    gap: 4rem;
+  }
+
+  .footer .upper-container {
+    justify-content: center;
+  }
+
+  .footer .logo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer .info-container {
+    display: none;
   }
 }
