@@ -10,7 +10,7 @@ function LocCards(props) {
         <img src={imgUrl} alt="card-image" className="img-1" />
       </div>
       <div className="card-header">
-        <p>
+        <p className="placeName">
           {/* header */}
           {name}
         </p>

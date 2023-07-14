@@ -20,7 +20,7 @@ function ResCards(props) {
         <img src={imgUrl} alt="card-image" className="img-1" />
       </div>
       <div className="card-header">
-        <p>
+        <p className="placeName">
           {/* header */}
           {name}
         </p>
@@ -33,6 +33,7 @@ function ResCards(props) {
       </div>
       <div className="d-flex align-items-center justify-content-between my-1 w-50 mx-auto">
         <p className="m-0">{oTime}</p>
+        <p className="m-0">To</p>
         <p className="m-0">{cTime}</p>
       </div>
       <div className="res-info">

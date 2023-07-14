@@ -10,6 +10,12 @@
   margin-top: 1rem;
   margin: auto;
   padding: 1rem;
+  background-color: white;
+  color:  #333333;
+}
+
+.placeName{
+  color:  #ff9800  ;
 }
 
 .card-container:hover {
@@ -28,7 +34,7 @@
   }
 }
 
-.card-container::after {
+/* .card-container::after {
   content: "";
   position: absolute;
   right: 0;
@@ -49,8 +55,8 @@
   width: 2px;
   height: 50%;
   background-color: rgba(0, 0, 0, 0.2);
-  transition: 0.3s opacity;
-}
+  transition: 0.3s opacity; */
+/* } */
 
 .card-container .card-image {
   position: relative;

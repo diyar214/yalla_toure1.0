@@ -2,8 +2,8 @@
   position: absolute;
   right: -13%;
   top: -5%;
-  width: 600px;
-  height: 600px;
+  width: 30vw;
+  height: 30vw;
   background: linear-gradient(var(--primary-color), #1dd8b6 60%);
   border-radius: 100px;
   transform: rotate(30deg);
@@ -13,9 +13,27 @@
   position: absolute;
   left: -12%;
   bottom: -5%;
-  width: 600px;
-  height: 600px;
+  width: 30vw;
+  height: 30vw;
   background: linear-gradient(90deg, var(--primary-color), #1dd8b6 60%);
   border-radius: 100px;
   transform: rotate(40deg);
+}
+
+@media (max-width: 768px) {
+  .box-1,
+  .box-2 {
+    width: 200px;
+    height: 200px;
+  }
+
+  .box-1 {
+    right: -13%;
+    top: -5%;
+  }
+
+  .box-2 {
+    left: -12%;
+    bottom: -5%;
+  }
 }
