@@ -38,6 +38,7 @@ const Places = () => {
             return (
               <LocationCards
                 key={i}
+                id={item.id}
                 name={item.name}
                 imgUrl={item.imgUrl}
                 address={item.address}

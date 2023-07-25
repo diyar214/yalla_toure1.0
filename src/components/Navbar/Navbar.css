@@ -56,6 +56,7 @@ li {
 }
 
 .nav-link {
+  display: block;
   color: #fff;
   font-size: 20px;
   padding: 0 10px;
