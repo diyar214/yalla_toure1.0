@@ -2,6 +2,7 @@ import React from "react";
 import "./homeHeader.css";
 
 function HomeHeader() {
+  
   return (
     <div className="container-fluid home-header">
       <div className="row">

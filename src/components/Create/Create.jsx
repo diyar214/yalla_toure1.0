@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import InputField from "./InputField";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../footer/Footer";
 import "./create.css";
@@ -24,6 +23,7 @@ const Create = () => {
     rules: "",
     restaurantId: 1,
     tourGuideId: 1,
+    images: [],
   });
 
   const [resData, setResData] = useState({
@@ -33,47 +33,37 @@ const Create = () => {
     description: "",
   });
 
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    if (formType) {
+      setLocData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    } else {
+      setResData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
+  };
+
   const changeForm = () => {
     setFormType(!formType);
   };
 
-  const submit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-    const locationConfig = {
-      method: "post",
-      url: "/Location/AddLocation",
-      data: {
-        name: locData.name,
-        imgUrl: locData.imgUrl,
-        description: locData.description,
-        address: locData.address,
-        type: locData.type,
-        oTime: locData.oTime,
-        cTime: locData.cTime,
-        entranceFee: locData.entranceFee,
-        rules: locData.rules,
-        restaurantId: locData.restaurantId,
-        tourGuideId: locData.tourGuideId,
-      },
-    };
+    const formData = formType ? locData : resData;
 
-    const RestaurantConfig = {
-      method: "post",
-      url: "/Restaurant/AddRestaurant",
-      data: {
-        name: resData.name,
-        imgUrl: resData.imgUrl,
-        address: resData.address,
-        description: resData.description,
-      },
-    };
+    axios
+      .post(formLink, formData)
+      .then((res) => {
+        console.log(res.status);
 
-    if (formType) {
-      axios(locationConfig)
-        .then((res) => {
-          console.log(res.status);
-
+        if (formType) {
           setLocData({
             id: 1,
             name: "",
@@ -87,22 +77,29 @@ const Create = () => {
             rules: "",
             restaurantId: 0,
             tourGuideId: 0,
+            images: [],
           });
-        })
-        .catch((err) => console.log(err));
-    } else {
-      axios(RestaurantConfig)
-        .then((res) => {
-          console.log(res.status);
-
+        } else {
           setResData({
             name: "",
             imgUrl: "",
             address: "",
             description: "",
           });
-        })
-        .catch((err) => console.log(err));
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleArrayInputChange = (event) => {
+    const { value } = event.target;
+    const valuesArray = value.split("\n");
+
+    if (formType) {
+      setLocData((prevData) => ({
+        ...prevData,
+        images: valuesArray,
+      }));
     }
   };
 
@@ -113,105 +110,102 @@ const Create = () => {
         <button onClick={changeForm}>
           Change to {formType ? "Restaurant" : "Place"}
         </button>
-        <form className="form" method="POST" action={formLink}>
-          <InputField
-            type="text"
-            name="imgUrl"
-            placeholder="Image URL"
-            value={resData.imgUrl}
-            onChange={(e) => {
-              setResData({ ...resData, imgUrl: e.target.value });
-              setLocData({ ...locData, imgUrl: e.target.value });
-            }}
-          />
-          <InputField
-            type="text"
-            name="placeName"
-            value={resData.name}
-            placeholder="Place Name"
-            onChange={(e) => {
-              setResData({ ...resData, name: e.target.value });
-              setLocData({ ...locData, name: e.target.value });
-            }}
-          />
-          <InputField
-            type="text"
-            name="description"
-            placeholder="Description"
-            value={resData.description}
-            onChange={(e) => {
-              setResData({ ...resData, description: e.target.value });
-              setLocData({ ...locData, description: e.target.value });
-            }}
-          />
-          <InputField
-            type="text"
-            name="address"
-            placeholder="Address"
-            value={resData.address}
-            onChange={(e) => {
-              setResData({ ...resData, address: e.target.value });
-              setLocData({ ...locData, address: e.target.value });
-            }}
-          />
-          {formType && (
-            <InputField
+        <form className="form" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Image URL:</label>
+            <input
               type="text"
-              name="type"
-              value={locData.type}
-              placeholder="Type"
-              onChange={(e) => {
-                setLocData({ ...resData, type: e.target.value });
-              }}
+              name="imgUrl"
+              value={formType ? locData.imgUrl : resData.imgUrl}
+              onChange={handleChange}
             />
-          )}
-          {formType && (
-            <InputField
+          </div>
+          <div className="form-group">
+            <label>{formType ? "Place Name:" : "Restaurant Name:"}</label>
+            <input
               type="text"
-              name="oTime"
-              value={locData.oTime}
-              placeholder="Opening Time"
-              onChange={(e) => {
-                setLocData({ ...resData, oTime: e.target.value });
-              }}
+              name="name"
+              value={formType ? locData.name : resData.name}
+              onChange={handleChange}
             />
-          )}
-          {formType && (
-            <InputField
+          </div>
+          <div className="form-group">
+            <label>Description:</label>
+            <input
               type="text"
-              name="cTime"
-              value={locData.cTime}
-              placeholder="Closing Time"
-              onChange={(e) => {
-                setLocData({ ...resData, cTime: e.target.value });
-              }}
+              name="description"
+              value={formType ? locData.description : resData.description}
+              onChange={handleChange}
             />
-          )}
-          {formType && (
-            <InputField
-              type="number"
-              name="entranceFee"
-              value={locData.entranceFee}
-              placeholder="Entrance Fee"
-              onChange={(e) => {
-                setLocData({ ...resData, entranceFee: e.target.value });
-              }}
-            />
-          )}
-          {formType && (
-            <InputField
+          </div>
+          <div className="form-group">
+            <label>Address:</label>
+            <input
               type="text"
-              name="rules"
-              value={locData.rules}
-              placeholder="Rules"
-              onChange={(e) => {
-                setLocData({ ...resData, rules: e.target.value });
-              }}
+              name="address"
+              value={formType ? locData.address : resData.address}
+              onChange={handleChange}
             />
+          </div>
+          {formType && (
+            <>
+              <div className="form-group">
+                <label>Type:</label>
+                <input
+                  type="text"
+                  name="type"
+                  value={locData.type}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label>Opening Time:</label>
+                <input
+                  type="text"
+                  name="oTime"
+                  value={locData.oTime}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label>Closing Time:</label>
+                <input
+                  type="text"
+                  name="cTime"
+                  value={locData.cTime}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label>Entrance Fee:</label>
+                <input
+                  type="number"
+                  name="entranceFee"
+                  value={locData.entranceFee}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label>Rules:</label>
+                <input
+                  type="text"
+                  name="rules"
+                  value={locData.rules}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label>Images (one link per line):</label>
+                <textarea
+                  name="images"
+                  value={locData.images.join("\n")}
+                  placeholder="Enter image URLs (one per line)"
+                  onChange={handleArrayInputChange}
+                ></textarea>
+              </div>
+            </>
           )}
-          <button type="submit" onClick={submit}>
-            Create
-          </button>
+          <button type="submit">Create</button>
         </form>
       </div>
       <Footer />

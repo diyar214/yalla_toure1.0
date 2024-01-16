@@ -3,6 +3,7 @@ import "./style.css";
 
 function ResCards(props) {
   const {
+    id,
     name,
     imgUrl,
     description,

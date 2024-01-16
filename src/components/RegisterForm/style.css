@@ -4,6 +4,7 @@
   flex-direction: column;
   gap: 1.5rem;
   padding: 1rem;
+  z-index: 2;
 }
 
 .register-form h5 {
